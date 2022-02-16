@@ -1,6 +1,7 @@
-package io.ymsoft.androidstudy
+package io.ymsoft.androidstudy.base
 
 import android.app.Application
+import io.ymsoft.androidstudy.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.Forest.plant
 

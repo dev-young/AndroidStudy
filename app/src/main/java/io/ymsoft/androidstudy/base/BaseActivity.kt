@@ -1,4 +1,4 @@
-package io.ymsoft.androidstudy
+package io.ymsoft.androidstudy.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
