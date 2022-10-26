@@ -55,4 +55,26 @@ object ImageCropUtil {
         }.getOrNull()
     }
 }
+/**exifPath 를 통해 비트맵을 회전 시킨다.*/
+fun Bitmap.applyOrientation(exifPath: String): Bitmap {
+    val exif = ExifInterface(exifPath)
+    val orientation =
+        exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED)
+    val matrix = Matrix()
 
+    when (orientation) {
+        ExifInterface.ORIENTATION_ROTATE_90 -> {
+            matrix.postRotate(90f)
+        }
+        ExifInterface.ORIENTATION_ROTATE_180 -> {
+            matrix.postRotate(180f)
+        }
+        ExifInterface.ORIENTATION_ROTATE_270 -> {
+            matrix.postRotate(270f)
+        }
+        else -> {
+            return this
+        }
+    }
+    return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
+}
